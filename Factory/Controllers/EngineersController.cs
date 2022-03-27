@@ -72,13 +72,13 @@ namespace Factory.Controllers
     }
     public ActionResult AddMachine(int id)
       {
-        ViewBag.MachineId = new SelectList(_db.Machines, "<MachineId>", "Name");
+        ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "Name");
         var thisEngineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
         return View(thisEngineer);
       }
 
     [HttpPost]
-    public ActionResult AddSpeciality(Engineer engineer, int MachineId)
+    public ActionResult AddMachine(Engineer engineer, int MachineId)
     {
       if (MachineId != 0)
       {
@@ -95,6 +95,5 @@ namespace Factory.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-    
   }  
 }  
